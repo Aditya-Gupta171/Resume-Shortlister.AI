@@ -1,10 +1,14 @@
-import type { AnalysisResponse, AnalysisHistoryItem, CandidateResult } from "../types";
+import type {
+  AnalysisResponse,
+  AnalysisHistoryItem,
+  CandidateResult,
+} from "../types";
 
-const API_BASE = "/api";
+const API_BASE = import.meta.env.VITE_API_BASE ?? "/api";
 
 export async function analyzeResumes(
   files: File[],
-  jobDescription: string
+  jobDescription: string,
 ): Promise<AnalysisResponse> {
   const formData = new FormData();
   formData.append("jobDescription", jobDescription);
@@ -16,7 +20,9 @@ export async function analyzeResumes(
   });
 
   if (!response.ok) {
-    const error = await response.json().catch(() => ({ error: "Request failed" }));
+    const error = await response
+      .json()
+      .catch(() => ({ error: "Request failed" }));
     throw new Error(error.error || `Server error: ${response.status}`);
   }
 
