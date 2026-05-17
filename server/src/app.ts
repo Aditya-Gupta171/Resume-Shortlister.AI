@@ -10,10 +10,13 @@ app.use("*", logger());
 app.use(
   "*",
   cors({
-    origin: ["http://localhost:5173"],
+    origin: [
+      "http://localhost:5173",
+      "https://resume-shortlister-ai.vercel.app",
+    ],
     allowMethods: ["GET", "POST"],
     allowHeaders: ["Content-Type"],
-  })
+  }),
 );
 
 app.get("/health", (c) => {
@@ -29,10 +32,7 @@ app.notFound((c) => {
 
 app.onError((err, c) => {
   console.error(`Unhandled error: ${err.message}`);
-  return c.json(
-    { error: "Internal server error", message: err.message },
-    500
-  );
+  return c.json({ error: "Internal server error", message: err.message }, 500);
 });
 
 export { app };
