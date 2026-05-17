@@ -10,7 +10,7 @@ app.use("*", logger());
 app.use(
   "*",
   cors({
-    origin: ["http://localhost:5173", "http://localhost:5174"],
+    origin: ["http://localhost:5173"],
     allowMethods: ["GET", "POST"],
     allowHeaders: ["Content-Type"],
   })
