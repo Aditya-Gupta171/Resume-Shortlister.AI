@@ -12,7 +12,7 @@ app.use(
   cors({
     origin: [
       "http://localhost:5173",
-      "https://resume-shortlister-ai.vercel.app",
+      "https://resume-shortlister-ai.vercel.app/",
     ],
     allowMethods: ["GET", "POST"],
     allowHeaders: ["Content-Type"],
