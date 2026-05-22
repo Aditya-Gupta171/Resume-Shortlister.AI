@@ -14,7 +14,7 @@ app.use(
       "http://localhost:5173",
       "https://resume-shortlister-ai.vercel.app",
     ],
-    allowMethods: ["GET", "POST"],
+    allowMethods: ["GET", "POST", "OPTIONS"],
     allowHeaders: ["Content-Type"],
   }),
 );
